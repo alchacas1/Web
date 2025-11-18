@@ -2,6 +2,7 @@
   text-align: center;
   min-height: 100vh;
   background-color: #f9fafb;
+  padding-bottom: 50px; /* Space for fixed footer */
 }
 
 /* Mobile-first approach */
