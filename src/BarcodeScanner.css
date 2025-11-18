@@ -3,6 +3,7 @@
     width: 100%;
     margin: 0;
     padding: 15px;
+    padding-bottom: 60px; /* Extra space for fixed footer */
     box-sizing: border-box;
   }
   

@@ -103,9 +103,11 @@ const BarcodeScanner = () => {
 
   useEffect(() => {
     return () => {
-      Quagga.stop();
+      if (isScanning) {
+        Quagga.stop();
+      }
     };
-  }, []);
+  }, [isScanning]);
 
   const copyToClipboard = () => {
     const text = scannedItems.map(item => item.code).join(',');
