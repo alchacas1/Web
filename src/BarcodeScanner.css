@@ -1,7 +1,9 @@
 .scanner-container {
-    max-width: 400px;
-    margin: 20px auto;
-    padding: 20px;
+    max-width: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 15px;
+    box-sizing: border-box;
   }
   
   .scanner-button {
@@ -13,6 +15,7 @@
     font-size: 16px;
     margin-bottom: 10px;
     cursor: pointer;
+    touch-action: manipulation;
   }
   
   .scanner-button.start {
@@ -31,11 +34,30 @@
     border: none;
     border-radius: 8px;
     font-size: 16px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     cursor: pointer;
+    touch-action: manipulation;
   }
   
   .copy-button:disabled {
+    background-color: #9ca3af;
+    cursor: not-allowed;
+  }
+
+  .download-button {
+    width: 100%;
+    padding: 15px;
+    background-color: #f59e0b;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+  
+  .download-button:disabled {
     background-color: #9ca3af;
     cursor: not-allowed;
   }
@@ -47,6 +69,7 @@
     overflow: hidden;
     display: none;
     margin-bottom: 20px;
+    min-height: 300px;
   }
   
   .scanner-view.active {
@@ -62,6 +85,64 @@
     height: 2px;
     background-color: red;
     z-index: 1;
+  }
+
+  .success-animation {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(16, 185, 129, 0.95);
+    color: white;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    z-index: 1000;
+    animation: fadeInOut 2s ease-in-out;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  .success-checkmark {
+    font-size: 72px;
+    font-weight: bold;
+    animation: scaleIn 0.5s ease-out;
+  }
+
+  .success-animation p {
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  @keyframes fadeInOut {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.8);
+    }
+    15% {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    85% {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.8);
+    }
+  }
+
+  @keyframes scaleIn {
+    0% {
+      transform: scale(0);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
   }
   
   .last-scanned {
@@ -94,5 +175,35 @@
     border-bottom: 1px solid #e5e7eb;
     font-family: monospace;
     font-size: 16px;
+  }
+
+  /* Mobile-specific optimizations */
+  @media (max-width: 768px) {
+    .scanner-container {
+      padding: 10px;
+    }
+
+    .scanner-view {
+      min-height: 250px;
+    }
+
+    .success-animation {
+      padding: 30px;
+    }
+
+    .success-checkmark {
+      font-size: 60px;
+    }
+
+    .success-animation p {
+      font-size: 18px;
+    }
+  }
+
+  /* Prevent zoom on mobile inputs */
+  @media (max-width: 768px) {
+    button {
+      font-size: 16px;
+    }
   }
   
